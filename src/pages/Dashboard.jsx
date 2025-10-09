@@ -99,7 +99,9 @@ export default function Dashboard() {
         
         <Grid item xs={12} md={6}>
           <RevealSection delay={0.35}>
-            <RiskMeter riskScore={67} />
+            <Box sx={{ padding: 2 }}>
+              <RiskMeter riskScore={67} />
+            </Box>
           </RevealSection>
         </Grid>
       </Grid>

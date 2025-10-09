@@ -17,35 +17,108 @@ export default function RiskMeter({ riskScore = 67 }) {
 
   const color = getColor(riskScore);
   const label = getLabel(riskScore);
-  const circumference = 2 * Math.PI * 100;
+  const circumference = 2 * Math.PI * 90;
   const offset = circumference - (riskScore / 100) * circumference;
 
   return (
-    <Card sx={{ height: '100%', background: '#111827', border: '1px solid rgba(99, 102, 241, 0.2)' }}>
-      <CardContent sx={{ p: 3.5 }}>
-        <Typography variant="h6" sx={{ fontWeight: 800, mb: 3, fontSize: '1.1rem', color: '#F9FAFB' }}>
+    <Card 
+      sx={{ 
+        height: '100%',
+        minHeight: 450,
+        background: 'rgba(30, 35, 50, 0.7)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        border: '1px solid rgba(99, 102, 241, 0.2)',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+        borderRadius: '24px',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <CardContent 
+        sx={{ 
+          p: 4, 
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <Typography 
+          variant="h6" 
+          sx={{ 
+            fontWeight: 800, 
+            mb: 3, 
+            fontSize: '1.2rem', 
+            color: '#F9FAFB' 
+          }}
+        >
           Current Risk Level
         </Typography>
         
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', py: 3 }}>
-          <Box sx={{ position: 'relative' }}>
-            <svg width="240" height="240">
+        <Box 
+          sx={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            flex: 1,
+            position: 'relative',
+            py: 4,
+          }}
+        >
+          {/* Outer container with padding to prevent clipping */}
+          <Box 
+            sx={{ 
+              position: 'relative',
+              width: 280,
+              height: 280,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            {/* Glow Background Effect */}
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 240,
+                height: 240,
+                borderRadius: '50%',
+                background: `radial-gradient(circle, ${color}50 0%, transparent 70%)`,
+                filter: 'blur(40px)',
+                zIndex: 0,
+              }}
+            />
+
+            {/* SVG Circle */}
+            <svg 
+              width="200" 
+              height="200" 
+              style={{ 
+                position: 'relative', 
+                zIndex: 1,
+              }}
+            >
+              {/* Background Circle */}
               <circle
-                cx="120"
-                cy="120"
-                r="100"
+                cx="100"
+                cy="100"
+                r="90"
                 fill="none"
                 stroke="rgba(255,255,255,0.05)"
-                strokeWidth="20"
+                strokeWidth="14"
               />
               
+              {/* Animated Progress Circle */}
               <motion.circle
-                cx="120"
-                cy="120"
-                r="100"
+                cx="100"
+                cy="100"
+                r="90"
                 fill="none"
                 stroke={color}
-                strokeWidth="20"
+                strokeWidth="14"
                 strokeLinecap="round"
                 strokeDasharray={circumference}
                 strokeDashoffset={offset}
@@ -55,11 +128,11 @@ export default function RiskMeter({ riskScore = 67 }) {
                 style={{ 
                   transform: 'rotate(-90deg)',
                   transformOrigin: '50% 50%',
-                  filter: `drop-shadow(0 0 20px ${color})`
                 }}
               />
             </svg>
             
+            {/* Center Text */}
             <Box
               sx={{
                 position: 'absolute',
@@ -67,21 +140,22 @@ export default function RiskMeter({ riskScore = 67 }) {
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
                 textAlign: 'center',
+                zIndex: 2,
               }}
             >
               <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.6, type: 'spring' }}
               >
                 <Typography 
                   sx={{ 
                     color,
                     fontWeight: 900,
-                    fontSize: '4rem',
+                    fontSize: '3.5rem',
                     lineHeight: 1,
-                    mb: 1,
-                    textShadow: `0 0 30px ${color}`
+                    mb: 0.5,
+                    textShadow: `0 0 30px ${color}`,
                   }}
                 >
                   {riskScore}%
@@ -90,7 +164,7 @@ export default function RiskMeter({ riskScore = 67 }) {
                   sx={{ 
                     color: '#9CA3AF',
                     fontWeight: 800,
-                    fontSize: '1rem',
+                    fontSize: '0.95rem',
                     textTransform: 'uppercase',
                     letterSpacing: '2px'
                   }}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material';
 import TopNavbar from './components/TopNavbar';
@@ -28,6 +28,7 @@ const darkTheme = createTheme({
     h5: { fontWeight: 700, fontSize: '1.5rem' },
     h6: { fontWeight: 700, fontSize: '1.1rem' },
     body1: { fontSize: '0.95rem', fontWeight: 500 },
+    body2: { fontSize: '0.875rem', fontWeight: 500 },
   },
   shape: { borderRadius: 20 },
   components: {
@@ -40,12 +41,68 @@ const darkTheme = createTheme({
           WebkitBackdropFilter: 'blur(20px)',
           border: '1px solid rgba(99, 102, 241, 0.2)',
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+          overflow: 'visible',
         },
       },
     },
     MuiCardContent: {
       styleOverrides: {
         root: { padding: '32px !important' },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 12,
+          padding: '10px 24px',
+          fontSize: '0.9rem',
+          fontWeight: 700,
+          textTransform: 'none',
+          boxShadow: 'none',
+          '&:hover': {
+            boxShadow: '0 8px 24px rgba(99, 102, 241, 0.4)',
+          },
+        },
+        contained: {
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          '&:hover': {
+            background: 'linear-gradient(135deg, #764ba2 0%, #667eea 100%)',
+          },
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: 10,
+          fontWeight: 700,
+          fontSize: '0.8rem',
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& .MuiOutlinedInput-root': {
+            borderRadius: 12,
+            backgroundColor: 'rgba(30, 35, 50, 0.8)',
+          },
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+          padding: '20px',
+        },
+        head: {
+          fontWeight: 800,
+          textTransform: 'uppercase',
+          fontSize: '0.75rem',
+          letterSpacing: '0.08em',
+          color: '#9CA3AF',
+        },
       },
     },
   },
