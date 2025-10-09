@@ -1,0 +1,70 @@
+/* API Loading States */
+.api-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.api-loading-spinner {
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #6366F1;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+
+/* API Error States */
+.api-error {
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  color: #DC2626;
+  margin: 16px 0;
+}
+
+.api-error-message {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.api-error-details {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+/* API Success States */
+.api-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  color: #10B981;
+  margin: 16px 0;
+}
+
+/* Retry Button */
+.api-retry-button {
+  background: #6366F1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.api-retry-button:hover {
+  background: #4F46E5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
