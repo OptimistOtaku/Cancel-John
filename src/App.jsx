@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material';
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
+import TopNavbar from './components/TopNavbar';
+import FloatingProfile from './components/FloatingProfile';
 import Dashboard from './pages/Dashboard';
 import LiveMonitoring from './pages/LiveMonitoring';
 import Analytics from './pages/Analytics';
@@ -13,45 +13,80 @@ import './App.css';
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
-    primary: { main: '#6366F1' },
-    secondary: { main: '#8B5CF6' },
-    background: {
-      default: '#0F172A',
-      paper: '#1E293B',
-    },
-    error: { main: '#DC2626' },
-    warning: { main: '#F59E0B' },
-    success: { main: '#10B981' },
+    primary: { main: '#6366F1', light: '#818CF8', dark: '#4F46E5' },
+    secondary: { main: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+    background: { default: '#1A1F2E', paper: 'rgba(30, 35, 50, 0.7)' },
+    error: { main: '#DC2626', light: '#EF4444', dark: '#B91C1C' },
+    warning: { main: '#F59E0B', light: '#FBBF24', dark: '#D97706' },
+    success: { main: '#10B981', light: '#34D399', dark: '#059669' },
+    text: { primary: '#F9FAFB', secondary: '#9CA3AF' },
   },
   typography: {
-    fontFamily: "'Inter', 'Roboto', sans-serif",
-    h4: { fontWeight: 700 },
-    h5: { fontWeight: 600 },
+    fontFamily: "'Inter', sans-serif",
+    h3: { fontWeight: 900, fontSize: '2.5rem' },
+    h4: { fontWeight: 800, fontSize: '2rem' },
+    h5: { fontWeight: 700, fontSize: '1.5rem' },
+    h6: { fontWeight: 700, fontSize: '1.1rem' },
+    body1: { fontSize: '0.95rem', fontWeight: 500 },
   },
-  shape: { borderRadius: 16 },
+  shape: { borderRadius: 20 },
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 24,
+          backgroundColor: 'rgba(30, 35, 50, 0.7)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          border: '1px solid rgba(99, 102, 241, 0.2)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+        },
+      },
+    },
+    MuiCardContent: {
+      styleOverrides: {
+        root: { padding: '32px !important' },
+      },
+    },
+  },
 });
 
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Router>
-        <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: 'background.default' }}>
-          <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
-          <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-            <Header toggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
-            <Box sx={{ flexGrow: 1, p: 3, overflow: 'auto' }}>
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/live-monitoring" element={<LiveMonitoring />} />
-                <Route path="/analytics" element={<Analytics />} />
-                <Route path="/cases" element={<CaseManagement />} />
-                <Route path="/settings" element={<Settings />} />
-              </Routes>
-            </Box>
+        <Box 
+          sx={{ 
+            minHeight: '100vh', 
+            bgcolor: 'background.default',
+            position: 'relative',
+          }}
+        >
+          {/* Top Navigation Bar */}
+          <TopNavbar />
+
+          {/* Main Content */}
+          <Box 
+            sx={{ 
+              pt: 10, 
+              px: { xs: 2, sm: 3, md: 4, lg: 6 },
+              pb: 4,
+              maxWidth: 1800,
+              mx: 'auto'
+            }}
+          >
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/live-monitoring" element={<LiveMonitoring />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/cases" element={<CaseManagement />} />
+              <Route path="/settings" element={<Settings />} />
+            </Routes>
           </Box>
+
+          {/* Floating User Profile */}
+          <FloatingProfile />
         </Box>
       </Router>
     </ThemeProvider>

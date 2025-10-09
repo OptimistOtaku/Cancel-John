@@ -10,44 +10,42 @@ export default function RiskMeter({ riskScore = 67 }) {
   };
 
   const getLabel = (score) => {
-    if (score < 40) return 'Safe';
-    if (score < 70) return 'Suspicious';
-    return 'High Risk';
+    if (score < 40) return 'SAFE';
+    if (score < 70) return 'SUSPICIOUS';
+    return 'HIGH RISK';
   };
 
   const color = getColor(riskScore);
   const label = getLabel(riskScore);
-  const circumference = 2 * Math.PI * 90;
+  const circumference = 2 * Math.PI * 100;
   const offset = circumference - (riskScore / 100) * circumference;
 
   return (
-    <Card className="glass-card" sx={{ height: '100%' }}>
-      <CardContent sx={{ p: 3 }}>
-        <Typography variant="h6" sx={{ fontWeight: 700, mb: 3 }}>
+    <Card sx={{ height: '100%', background: '#111827', border: '1px solid rgba(99, 102, 241, 0.2)' }}>
+      <CardContent sx={{ p: 3.5 }}>
+        <Typography variant="h6" sx={{ fontWeight: 800, mb: 3, fontSize: '1.1rem', color: '#F9FAFB' }}>
           Current Risk Level
         </Typography>
         
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', py: 2 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', py: 3 }}>
           <Box sx={{ position: 'relative' }}>
-            <svg width="220" height="220">
-              {/* Background Circle */}
+            <svg width="240" height="240">
               <circle
-                cx="110"
-                cy="110"
-                r="90"
+                cx="120"
+                cy="120"
+                r="100"
                 fill="none"
-                stroke="rgba(255,255,255,0.08)"
-                strokeWidth="16"
+                stroke="rgba(255,255,255,0.05)"
+                strokeWidth="20"
               />
               
-              {/* Animated Progress Circle */}
               <motion.circle
-                cx="110"
-                cy="110"
-                r="90"
+                cx="120"
+                cy="120"
+                r="100"
                 fill="none"
                 stroke={color}
-                strokeWidth="16"
+                strokeWidth="20"
                 strokeLinecap="round"
                 strokeDasharray={circumference}
                 strokeDashoffset={offset}
@@ -57,12 +55,11 @@ export default function RiskMeter({ riskScore = 67 }) {
                 style={{ 
                   transform: 'rotate(-90deg)',
                   transformOrigin: '50% 50%',
-                  filter: `drop-shadow(0 0 12px ${color})`
+                  filter: `drop-shadow(0 0 20px ${color})`
                 }}
               />
             </svg>
             
-            {/* Center Text */}
             <Box
               sx={{
                 position: 'absolute',
@@ -75,29 +72,27 @@ export default function RiskMeter({ riskScore = 67 }) {
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                transition={{ delay: 0.5, duration: 0.5, type: 'spring' }}
+                transition={{ delay: 0.5, duration: 0.6, type: 'spring' }}
               >
                 <Typography 
-                  variant="h2" 
                   sx={{ 
                     color,
                     fontWeight: 900,
-                    fontSize: '3.5rem',
+                    fontSize: '4rem',
                     lineHeight: 1,
-                    mb: 0.5,
-                    textShadow: `0 0 20px ${color}`
+                    mb: 1,
+                    textShadow: `0 0 30px ${color}`
                   }}
                 >
                   {riskScore}%
                 </Typography>
                 <Typography 
-                  variant="body1" 
                   sx={{ 
-                    color: 'text.secondary',
-                    fontWeight: 600,
+                    color: '#9CA3AF',
+                    fontWeight: 800,
                     fontSize: '1rem',
                     textTransform: 'uppercase',
-                    letterSpacing: '1px'
+                    letterSpacing: '2px'
                   }}
                 >
                   {label}
