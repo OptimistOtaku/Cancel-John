@@ -10,6 +10,7 @@ import AlertPanel from '../components/AlertPanel';
 import FraudTrendChart from '../components/FraudTrendChart';
 import TopScamTypes from '../components/TopScamTypes';
 import RevealSection from '../components/RevealSection';
+import RotatingText from '../components/RotatingText';
 import { motion } from 'framer-motion';
 
 export default function Dashboard() {
@@ -19,23 +20,32 @@ export default function Dashboard() {
 
   return (
     <Box sx={{ maxWidth: 1600, mx: 'auto' }}>
-      {/* Welcome Banner - Full Width */}
+      {/* Welcome Banner */}
       <RevealSection delay={0.1}>
         <Box sx={{ mb: 5 }}>
           <motion.div
             className="gradient-bg"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             style={{
               borderRadius: 24,
               padding: '48px 40px',
               color: 'white',
-              boxShadow: '0 20px 60px rgba(99, 102, 241, 0.5)',
+              boxShadow: '0 20px 60px rgba(107, 127, 255, 0.5)',
             }}
           >
             <Typography variant="h3" sx={{ fontWeight: 900, mb: 2, fontSize: '2.5rem' }}>
-              Welcome back!
+              <RotatingText 
+                texts={[
+                  'Welcome back!',
+                  'System Active',
+                  'Monitoring Calls',
+                  'Protecting Users'
+                ]}
+                rotationInterval={3000}
+                staggerDuration={0.03}
+              />
             </Typography>
             <Typography variant="h6" sx={{ opacity: 0.95, mb: 1.5, fontWeight: 600, fontSize: '1.2rem' }}>
               SecureBank Fraud Detection System
@@ -48,9 +58,9 @@ export default function Dashboard() {
       </RevealSection>
 
       <Grid container spacing={4}>
-        {/* Stats Row - Max 3 Cards */}
+        {/* Stats Row - Smooth cascade effect */}
         <Grid item xs={12} sm={6} md={4}>
-          <RevealSection delay={0.15}>
+          <RevealSection delay={0.1}>
             <StatsCard
               title="Calls Analyzed Today"
               value={1247}
@@ -74,7 +84,7 @@ export default function Dashboard() {
         </Grid>
         
         <Grid item xs={12} sm={6} md={4}>
-          <RevealSection delay={0.25}>
+          <RevealSection delay={0.3}>
             <StatsCard
               title="Detection Accuracy"
               value="97.3%"
@@ -86,71 +96,64 @@ export default function Dashboard() {
         </Grid>
       </Grid>
 
-      {/* Spacer */}
       <Box sx={{ my: 5 }} />
 
       {/* Main Action Cards */}
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
-          <RevealSection delay={0.3}>
+          <RevealSection delay={0.1}>
             <AudioUploader onUpload={handleAudioUpload} />
           </RevealSection>
         </Grid>
         
         <Grid item xs={12} md={6}>
-          <RevealSection delay={0.35}>
-            <Box sx={{ padding: 2 }}>
-              <RiskMeter riskScore={67} />
-            </Box>
+          <RevealSection delay={0.2}>
+            <RiskMeter riskScore={67} />
           </RevealSection>
         </Grid>
       </Grid>
 
-      {/* Spacer */}
       <Box sx={{ my: 5 }} />
 
       {/* Monitoring Section */}
       <Grid container spacing={4}>
         <Grid item xs={12} lg={6}>
-          <RevealSection delay={0.4}>
+          <RevealSection delay={0.1}>
             <CallMonitor />
           </RevealSection>
         </Grid>
 
         <Grid item xs={12} lg={6}>
-          <RevealSection delay={0.45}>
+          <RevealSection delay={0.2}>
             <AlertPanel />
           </RevealSection>
         </Grid>
       </Grid>
 
-      {/* Spacer */}
       <Box sx={{ my: 5 }} />
 
       {/* Analytics Section */}
       <Grid container spacing={4}>
         <Grid item xs={12} lg={8}>
-          <RevealSection delay={0.5}>
+          <RevealSection delay={0.1}>
             <FraudTrendChart />
           </RevealSection>
         </Grid>
 
         <Grid item xs={12} lg={4}>
-          <RevealSection delay={0.55}>
+          <RevealSection delay={0.2}>
             <TopScamTypes />
           </RevealSection>
         </Grid>
       </Grid>
 
-      {/* Spacer */}
       <Box sx={{ my: 5 }} />
 
-      {/* Live Transcript - Full Width */}
-      <RevealSection delay={0.6}>
+      {/* Live Transcript */}
+      <RevealSection delay={0.1}>
         <LiveTranscript />
       </RevealSection>
 
-      {/* Bottom Spacer */}
       <Box sx={{ mb: 4 }} />
     </Box>
   );
