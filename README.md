@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# Cancel-John: Your Personal Scam Shield
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to **Cancel-John**, the ultimate guardian for your phone calls and transactions. Empowered by cutting-edge AI and intuitive analytics, Cancel-John is your go-to solution for detecting and neutralizing scams in real-time.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 What is Cancel-John?
 
-### `npm start`
+Cancel-John is a state-of-the-art fraud prevention system designed to protect you from scams. With a sleek dashboard, an intelligent backend powered by **FastAPI** and **DistilBERT**, and real-time monitoring capabilities, Cancel-John ensures you're always one step ahead of fraudsters.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ✨ Key Features
 
-### `npm test`
+### **🛡️ Scam Detection**
+- **AI-Powered Analysis**: Detect scam attempts with lightning-fast precision using the DistilBERT model.
+- **Audio Uploads**: Analyze suspicious audio files and receive detailed transcripts, risk scores, and red flag keywords.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### **📊 Fraud Analytics**
+- **Risk Meter**: Visualize scam risk levels with color-coded severity (Safe, Suspicious, High Risk).
+- **Trend Reports**: View monthly scam trends and prevention stats through interactive area charts.
 
-### `npm run build`
+### **🚨 Real-Time Alerts**
+- Receive instant notifications for high-risk calls.
+- Customize risk thresholds and enable auto-block for critical threats.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **🔍 Case Management**
+- Keep track of fraud investigations with detailed case logs, including customer info, risk levels, and financial impact.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **💡 Modern Design**
+- A stunning dashboard built with **React** and enhanced by **Material UI** and **Framer Motion** for smooth animations and a seamless user experience.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🛠️ How It Works
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Backend**: A FastAPI server communicates with the DistilBERT model to process incoming data and generate predictions.
+2. **Frontend**: The React-based dashboard displays insights, allowing users to interact with data and make informed decisions.
+3. **API Integration**: Secure and scalable APIs handle everything from scam detection to case management.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🧑‍💻 Getting Started
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Prerequisites
+- **Node.js** >= 18.x
+- **Python** >= 3.9
+- **FastAPI** and **Torch** for backend setup
 
-## Learn More
+### Installation
+```bash
+# Clone the repo
+git clone https://github.com/OptimistOtaku/Cancel-John.git
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Navigate to the project directory
+cd Cancel-John
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Install frontend dependencies
+npm install
 
-### Code Splitting
+# Install backend dependencies
+pip install -r requirements.txt
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Running the Application
 
-### Analyzing the Bundle Size
+#### Frontend
+```bash
+npm start
+```
+Access the dashboard at [http://localhost:3000](http://localhost:3000).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Backend
+```bash
+uvicorn main:app --reload
+```
+API will be available at [http://localhost:8000](http://localhost:8000).
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📖 Learn More
 
-### Advanced Configuration
+- **API Documentation**: The FastAPI backend provides auto-generated API docs at `/docs`.
+- **Model**: Leveraging the **DistilBERT** model for natural language processing tasks.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 🔐 Security & Privacy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Your safety is our priority. All data is securely processed, and sensitive information is never stored without encryption.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🌟 Join the Fight Against Scams!
+
+Take control of your security with Cancel-John. Whether you’re an individual or an organization, rest assured knowing you have a powerful ally against fraud.
+
+---
+
+## 📝 License
+
+MIT License. See `LICENSE` for more details.
